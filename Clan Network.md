@@ -186,5 +186,4 @@ Official website: https://www.clan.network/
 
 Official documentations:
 1. https://docs.clan.network/nodes-and-validators/joining-testnets#cland-installation
-2. https://docs.clan.network/nodes-and-validators/joining-testnets#cland-installation
-3. https://secretnodes.com/clan/chains/playstation-2/validators?node_filter=Active
+2. https://secretnodes.com/clan/chains/playstation-2/validators?node_filter=Active
