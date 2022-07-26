@@ -52,7 +52,7 @@ echo $TER_CHAIN
 ```
 ## Init the chain:
 ```
-teritorid init $TER_MONIKER --chain-id teritori-testnet-v2
+teritorid init $TER_CHAIN --chain-id teritori-testnet-v2
 ```
 ## Generate keys:
 ```
