@@ -10,9 +10,9 @@ sudo apt install make clang pkg-config libssl-dev build-essential git jq ncdu bs
 ```
 ## Install Go:
 ```
-ver="1.18.3"
-wget -O go1.18.linux-amd64.tar.gz https://go.dev/dl/go1.18.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz && rm go1.18.linux-amd64.tar.gz
+wget -O go1.18.2.linux-amd64.tar.gz https://golang.org/dl/go1.18.2.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz && rm go1.18.2.linux-amd64.tar.gz
+
 cat <<'EOF' >> $HOME/.bash_profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -148,21 +148,19 @@ strided tx stakeibc liquid-stake 1000 uatom --from $STRIDE_WALLET --chain-id $ST
 ```
 ## Collect rewards:
 ```
- strided tx distribution withdraw-all-rewards \
- --chain-id=$STRIDE_CHAIN \
- --from $STRIDE_WALLET
+ teritorid tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$TER_CHAIN --gas=auto
 ```
 ## Delegate tokens to your validator:
 ```
-strided tx staking delegate $(stride keys show $STRIDE_WALLET --bech val -a) <amountustrd> \
- --chain-id=$STRIDE_CHAIN \
- --from=$STRIDE_WALLET
+teritorid tx staking delegate $TER_VALOPER_ADDRESS 10000000utori --from=$WALLET --chain-id=$TER_CHAIN --gas=auto
 ```
 ## Unjail:
 ```
-strided tx slashing unjail \
- --chain-id $STRIDE_CHAIN \
- --from $STRIDE_WALLET 
+teritorid tx slashing unjail \
+  --broadcast-mode=block \
+  --from=$TER_WALLET \
+  --chain-id=$TER_CHAIN \
+  --gas=auto
 ```
 ##  Usefull commands
 ## Node info
@@ -171,7 +169,7 @@ teritorid status 2>&1 | jq .NodeInfo
 ```
 ## Synchronization status
 ```
-strided status 2>&1 | jq .SyncInfo
+teritorid status 2>&1 | jq .SyncInfo
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 ## Validator info
